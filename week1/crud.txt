@@ -29,3 +29,35 @@ db.courses.insertMany([
     {course_id: "C102", title: "Poet", duration_weeks: 2, mentor_id: "M002"},
     {course_id: "C103", title: "AI for beginners", duration_weeks: 3, mentor_id: "M003"},
 ])
+
+
+//Hands-on Four: Connect everything together with enrolments (Analytics)
+
+db.enrolments.insertMany([
+    {
+        student_id: "S001",
+        course_id: "C101",
+        status: "active"
+    },
+    {
+        student_id: "S002",
+        course_id: "C102",
+        status: "active"
+    },
+    {
+        student_id: "S003",
+        course_id: "C103",
+        status: "inactive"
+    },
+    {
+        student_id: "S004",
+        course_id: "C101",
+        status: "active"
+    },
+])
+
+//Aggregation: Students per Course
+
+db.enrolments.aggregate([
+    {$group: {_id: "$course_id", total_students:{$sum:1} }}
+])
