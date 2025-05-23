@@ -1,0 +1,18 @@
+//Hands-On-One
+use schoolDB
+
+db.students.insertMany([
+    {student_id: "S001", name: "Joy", age: 21, track:"Web"},
+    {student_id: "S002", name: "Kevin", age: 19, track:"Python"},
+    {student_id: "S003", name: "Zahara", age: 21, track:"SW-Testing"},
+    {student_id: "S004", name: "Brian", age: 21, track:"AI"},
+    {student_id: "S005", name: "Lilian", age: 21, track:"Mern Stack"}
+])
+
+//Hands-On-Owo --Embeding
+db.students.updateMany({}, {
+    $set: {
+        contact: {email: :"user@exaample.com", phone: "07000011122"}
+        emergency: {name: "parent", relation: "Mother", phone: }
+    }
+})
