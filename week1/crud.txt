@@ -16,4 +16,16 @@ db.students.updateMany({}, {
         emergency: {name: "parent", relation: "Mother", phone: "07000033344"}
     }
 })
-//Hands-on Three
+//Hands-on Three: Courses $ Mentors with Refrencing
+
+db.mentors.insertMany([
+    {mentor_id: "M001", name: "Mr. Kasongo", specialty: "Wantam"},
+    {mentor_id: "M002", name: "Mr. Wiggy G", specialty: "Truthful"},
+    {mentor_id: "M003", name: "Mr. Dedan", specialty: "AI"}
+])
+
+db.courses.insertMany([
+    {course_id: "C101", title: "Lyingtology", duration_weeks: 5, mentor_id: "M001"},
+    {course_id: "C102", title: "Poet", duration_weeks: 2, mentor_id: "M002"},
+    {course_id: "C103", title: "AI for beginners", duration_weeks: 3, mentor_id: "M003"},
+])
