@@ -31,7 +31,7 @@ async function updateBook(id, updates) {
 async function deleteBook(id) {
   const books = await connectDB();
   const result = await books.deleteOne({ _id: new ObjectId(id) });
-  console.log("Deleted:", result.deleteCount);
+  console.log("Deleted:", result.deletedCount);
 }
 
 // exporting

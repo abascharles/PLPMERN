@@ -1,7 +1,7 @@
 //Connect to Mongo DB
-const { mongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 const url = "mongodb://localhost:27017";
-const client = new mongoClient(url);
+const client = new MongoClient(url);
 
 async function conectDB() {
   await client.connect();
