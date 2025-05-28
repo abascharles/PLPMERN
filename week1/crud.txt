@@ -38,26 +38,34 @@ db.enrolments.insertMany([
         student_id: "S001",
         course_id: "C101",
         status: "active"
+        score: 88
     },
     {
         student_id: "S002",
         course_id: "C102",
         status: "active"
+        score: 98
     },
     {
         student_id: "S003",
         course_id: "C103",
         status: "inactive"
+        score: 78
     },
     {
         student_id: "S004",
         course_id: "C101",
         status: "active"
+        score: 60
     },
 ])
 
 //Aggregation: Students per Course
-
 db.enrolments.aggregate([
     {$group: {_id: "$course_id", total_students:{$sum:1} }}
+])
+
+//Aggregation: Average score per course
+db.enrolments.aggregate([
+    {$group: {_id: "$course_id", avg_score:{$avg: "$score"} }}
 ])
