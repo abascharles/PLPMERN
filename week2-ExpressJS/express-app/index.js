@@ -4,7 +4,7 @@ const app = express(); //Initializing the app
 const port = 3000;
 
 app.get("/", (req, res) => {
-  req.send("Hello World"); //Sends a response to the client
+  res.send("Hello World"); //Sends a response to the client
 });
 
 //Start the server on port 3000
