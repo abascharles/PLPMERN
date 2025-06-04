@@ -1,0 +1,6 @@
+Importing and exporting modules in node Js Common JS/ ES6 Syntax
+
+    -https://www.freecodecamp.org/news/modules-in-javascript/#heading-commonjs-modules
+
+Mongo DB 20% that does 80% of the work
+    -https://www.youtube.com/watch?v=c2M-rlkkT5o&t=415s
