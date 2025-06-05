@@ -28,15 +28,15 @@ app.post("/contact", (req, res) => {
 app.get("/user/:id", (req, res) => {
   res.send(`User ID: ${req.params.id}`);
 });
-
 //req.params - object that holds all the route parameters
 
 //Query Parameter
 app.get("/search", (req, res) => {
   res.send(`Serch Query: ${req.query.q}`); //respond with the qeury value
 });
-
-//qewry looks like this
+//req.query = query string parameter
+//q is the value
+//query looks like this
 //search?q=value
 
 //Start the server on port 3000
