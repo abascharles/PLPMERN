@@ -67,13 +67,16 @@ app.get("/users", (req, res) => {
 
 //Read one
 app.get("/users/:id", (req, res) => {
-  /**
-   * Finds a user from the users array by matching the user ID with the request parameter ID.
-   * Uses loose equality (==) to compare the user ID with the string parameter from the request.
-   * @type {Object|undefined} The user object if found, otherwise undefined.
-   */
   const user = users.find((u) => u.id == req.params.id);
   res.json(user);
 });
 
 //Update
+app.put("/users/:id", (req, res) => {
+  const user = users.find((u) => u.id == req.params.id);
+  user.name = req.body.name;
+  res.json(user);
+});
+
+//Delete
+app.delete("/users", (req, res) => {});
