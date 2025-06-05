@@ -1,6 +1,9 @@
 //Import express
 const express = require("express");
 const app = express(); //Initializing the app
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
 
 const port = 3000;
 //Middlewares
@@ -32,7 +35,7 @@ app.get("/user/:id", (req, res) => {
 
 //Query Parameter
 app.get("/search", (req, res) => {
-  res.send(`Serch Query: ${req.query.q}`); //respond with the qeury value
+  res.send(`Search Query: ${req.query.q}`); //respond with the query value
 });
 //req.query = query string parameter
 //q is the value
@@ -85,3 +88,5 @@ app.delete("/users/:id", (req, res) => {
   users = users.filter((u) => u.id != req.params.id);
   res.status(204).send();
 });
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
