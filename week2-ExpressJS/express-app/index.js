@@ -73,10 +73,15 @@ app.get("/users/:id", (req, res) => {
 
 //Update
 app.put("/users/:id", (req, res) => {
-  const user = users.find((u) => u.id == req.params.id);
+  //const user = users.find((u) => u.id == req.params.id);
+  // Better comparison (convert string to number)
+  const user = users.find((u) => u.id === parseInt(req.params.id));
   user.name = req.body.name;
   res.json(user);
 });
 
 //Delete
-app.delete("/users", (req, res) => {});
+app.delete("/users/:id", (req, res) => {
+  users = users.filter((u) => u.id != req.params.id);
+  res.status(204).send();
+});
