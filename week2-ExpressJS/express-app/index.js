@@ -60,4 +60,20 @@ app.post("/users", (req, res) => {
   res.status(201).json(newUser);
 });
 
+//Read
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+
+//Read one
+app.get("/users/:id", (req, res) => {
+  /**
+   * Finds a user from the users array by matching the user ID with the request parameter ID.
+   * Uses loose equality (==) to compare the user ID with the string parameter from the request.
+   * @type {Object|undefined} The user object if found, otherwise undefined.
+   */
+  const user = users.find((u) => u.id == req.params.id);
+  res.json(user);
+});
+
 //Update
