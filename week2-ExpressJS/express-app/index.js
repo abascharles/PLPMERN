@@ -1,18 +1,18 @@
 //Import express
 const express = require("express");
 const app = express(); //Initializing the app
+
 const port = 3000;
-
-//
-
-app.get("/", (req, res) => {
-  res.send("Hello World"); //Sends a response to the client - outgoing resposnse  to the client
-});
-
 //Middlewares
 app.use((req, res, next) => {
   console.log(`${req.method}  ${req.url}`);
   next();
+});
+
+app.use(express.json()); //middleware to pass request(json) body - checks the body of the request (make sure it has something)
+
+app.get("/", (req, res) => {
+  res.send("Hello World"); //Sends a response to the client - outgoing resposnse  to the client
 });
 
 //Routing
@@ -43,3 +43,21 @@ app.get("/search", (req, res) => {
 app.listen(port, () => {
   console.log("Server is running of http://localhost:3000");
 });
+
+//REST API
+//CRUD - POST, GET, PUT, DELETE
+
+//memory
+let users = [
+  { id: 1, name: "Spongebob" },
+  { id: 2, name: "Squidward" },
+];
+
+//Create
+app.post("/users", (req, res) => {
+  const newUser = { id: users.length + 1, name: req.body.name }; //forming a new id by adding one to the current lenght od users array
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
+//Update
