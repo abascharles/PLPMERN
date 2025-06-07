@@ -1,21 +1,30 @@
 //Imports
 const express = require("express");
 const mongoose = require("mongoose");
+const taskRoutes = require("./routes");
 
-//
-const app = express();
-app.use(express.json());
+//Create express server and middle ware
+const app = express(); //creating an express server
+app.use(express.json()); //middleware that allows jsons to be created
 
-const MongoUri = "mongodb://localhost:27017/taskdb";
-const PORT = 3000;
+//Constants
+const mongoUri = "mongodb://localhost:27017/taskdb"; //connect mongodb
+const port = 3000;
 
+//MongoDb connection
 mongoose
-  .connect(MongoUri, {
+  .connect(mongoUri, {
+    //pasing instructions
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connected to mongoDB"))
-  .catch((err) => console.error("MongoDb Connection error", err));
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+  .then(() => console.log("Connected to mongodb"))
+  .catch((err) => console.error("Could not connect to mongodb", err));
+
+//use task routes
+app.use("/", taskRoutes);
+
+//Fire up the server
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
 });
