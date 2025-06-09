@@ -20,9 +20,29 @@ router.get("/", async (req, res) => {
 });
 
 //Read one
-
 router.get("/:id", async (req, res) => {
   const book = await Book.findById(req.params.id);
+  if (!book) return res.status(404).send("Book not found");
+  res.send(book);
+});
+
+//Update
+router.put("/:id", async (req, res) => {
+  try {
+    const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!book) return res.status(404).send("Book not found");
+    res.send(book);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+//Delete
+router.delete("/:id", async (req, res) => {
+  const book = await Book.findByIdAndDelete(req.params.id);
   if (!book) return res.status(404).send("Book not found");
   res.send(book);
 });
