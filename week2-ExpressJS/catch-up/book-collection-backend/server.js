@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bookRoutes = require("./routes/bookRoutes");
 
-const mongoUri = "mongodb://localhost/27017/bookdb";
+const mongoUri = "mongodb://localhost:27017/bookdb";
 const port = 4000;
 
 //middlewares
