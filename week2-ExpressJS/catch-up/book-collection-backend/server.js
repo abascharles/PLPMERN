@@ -6,10 +6,11 @@ const bookRoutes = require("./routes/bookRoutes");
 const mongoUri = "mongodb://localhost/27017/bookdb";
 const port = 4000;
 
+//middlewares
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/books", bookRoutes);
+app.use("/books", bookRoutes); //Hey Express app, whenever someone makes a request to any URL that starts with '/books', hand over the request to the `bookRoutes` to handle it.
 
 mongoose
   .connect(mongoUri)
