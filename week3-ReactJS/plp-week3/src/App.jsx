@@ -1,11 +1,9 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import "./index.css";
 
-function App() {
-  return;
-  <div></div>;
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold mb-4">Task Dashboard</h1>
+    </div>
+  );
 }
-
-export default App;
