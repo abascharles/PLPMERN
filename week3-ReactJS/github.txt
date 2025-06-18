@@ -1,0 +1,2 @@
+https://github.com/PLP-MERN-Stack-Development/week3-react-basics.git
+https://github.com/PLP-MERN-Stack-Development/week-3-hands-on.git
