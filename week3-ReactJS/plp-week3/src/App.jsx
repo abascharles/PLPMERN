@@ -3,12 +3,12 @@ import Task from './components/Task';
 
 export default function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, title: 'Write Lesson Plan', completed: false },
-    { id: 2, title: 'Review MongoDB Quiz', completed: true },
+    { id: 1, title: 'Write Lesson Plan', complete: false },
+    { id: 2, title: 'Review MongoDB Quiz', complete: true },
   ]);
 
   const toggleTask = id => {
-    setTasks(curr => curr.map(t => (t.id === id ? { ...t, completed: !t.completed } : t)));
+    setTasks(curr => curr.map(t => (t.id === id ? { ...t, complete: !t.complete } : t)));
   };
 
   return (

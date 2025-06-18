@@ -1,4 +1,4 @@
-//props in react
+//props in react - passes from parent to child
 //Think of props as delivery package to your component in this case Task
 // ## Think of it Like This: 📬
 
@@ -11,11 +11,11 @@
 
 export default function Task({ id, title, complete, onToggle }) {
   return (
-    <div className="flex-items-center justify-between p-4 bg-white rounded shadow mb-2">
+    <div className="flex items-center justify-between p-4 bg-white rounded shadow mb-2">
       {/* conditional styling */}
       <span className={complete ? 'line-through text-gray-500' : ''}>{title}</span>
 
-      <button className={`px-3 py-1 rounded ${complete ? 'bg-green-200' : 'bg-blue-200'}`} onClick={() => onToggle}>
+      <button className={`px-3 py-1 rounded ${complete ? 'bg-green-200' : 'bg-blue-200'}`} onClick={() => onToggle(id)}>
         {complete ? 'Undo' : 'Done'}
       </button>
     </div>
