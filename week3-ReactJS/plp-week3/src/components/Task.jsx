@@ -9,14 +9,17 @@
 
 // The `{ id, title, complete, onToggle }` part is called **destructuring props** - it's like opening the delivery box and taking out exactly what you need.
 
-export default function Task({ id, title, complete, onToggle }) {
+export default function Task({ id, title, completed, onToggle }) {
   return (
     <div className="flex items-center justify-between p-4 bg-white rounded shadow mb-2">
       {/* conditional styling */}
-      <span className={complete ? 'line-through text-gray-500' : ''}>{title}</span>
+      <span className={completed ? 'line-through text-gray-500' : ''}>{title}</span>
 
-      <button className={`px-3 py-1 rounded ${complete ? 'bg-green-200' : 'bg-blue-200'}`} onClick={() => onToggle(id)}>
-        {complete ? 'Undo' : 'Done'}
+      <button
+        className={`px-3 py-1 rounded ${completed ? 'bg-green-200' : 'bg-blue-200'}`}
+        onClick={() => onToggle(id)}
+      >
+        {completed ? 'Undo' : 'Done'}
       </button>
     </div>
   );
