@@ -1,4 +1,4 @@
-import { useSate } from 'react';
+import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -24,11 +24,12 @@ export default function FeedbackForm({ onAdd }) {
     setRating('');
   };
 
-  return;
-  <form className="space-y-4" onSubmit={handleSubmit}>
-    <Input placeholder="Student Name..." value={name} onChange={e => setName(e.target.value)} />
-    <Textarea placeholder="Feedback" value={comment} onChange={e => setComment(e.target.value)} />
-    <Input placeholder="Rating(1-5)" type="number" value={rating} onChange={e => setRating(e.target.value)} />
-    <Button type="submit"> Submit Feedback</Button>
-  </form>;
+  return (
+    <form className="space-y-4" onSubmit={handleSubmit}>
+      <Input placeholder="Student Name..." value={name} onChange={e => setName(e.target.value)} />
+      <Textarea placeholder="Feedback" value={comment} onChange={e => setComment(e.target.value)} />
+      <Input placeholder="Rating(1-5)" type="number" value={rating} onChange={e => setRating(e.target.value)} />
+      <Button type="submit"> Submit Feedback</Button>
+    </form>
+  );
 }
