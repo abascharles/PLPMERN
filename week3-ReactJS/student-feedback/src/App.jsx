@@ -8,7 +8,11 @@ import viteLogo from '/vite.svg';
 export default function App() {
   const [feedbacks, setFeedbacks] = useState([]);
 
-  const addFeedback = addedfeddback => {
-    setFeedbacks(prev => [...prev, addedfeddback]);
+  const addFeedback = feedback => {
+    setFeedbacks(prev => [...prev, feedback]);
+  };
+
+  const deleteFeedback = index => {
+    setFeedbacks(prev => prev.filter((_, i) => i !== index));
   };
 }
