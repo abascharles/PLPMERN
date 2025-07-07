@@ -16,3 +16,6 @@ app.use(express.json());
 
 //Routes - creating api end point
 app.use('/api/task', taskRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server riunning on http://localhost: ${PORT}`));
