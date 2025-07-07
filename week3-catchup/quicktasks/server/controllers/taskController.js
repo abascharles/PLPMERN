@@ -19,7 +19,7 @@ const createTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
   const updated = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.json(update);
+  res.json(updated);
 };
 
 //Delete a Task
