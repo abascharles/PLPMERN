@@ -1,5 +1,5 @@
 const { json } = require('express');
-const task = require('../Models/Task');
+const Task = require('../Models/Task');
 
 //Get all tasks
 
@@ -10,9 +10,9 @@ const getTask = async (req, res) => {
 
 //Create a Task
 const createTask = async (req, res) => {
-  const task = new Task(req.body);
-  await task.save();
-  res.json(task);
+  const newTask = new Task(req.body);
+  await newTask.save();
+  res.json(newTask);
 };
 
 //Update task
