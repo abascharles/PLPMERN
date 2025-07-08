@@ -38,6 +38,26 @@ const Home = () => {
   //deleting
   const handleDelete = async id => {
     await deleteTask(id);
-    setTasks(prev => prev.filter(t => t._id != id));
+    setTasks(prev => prev.filter(t => t._id !== id));
   };
+
+  return (
+    <div className="main-h-screen bg-gray-100 p-10 max-w-xl mx-auto ">
+      <h1 className="text-3xl font-bold mb-6 text-center">Quicktasks</h1>
+      <div className="flex gap-2 mb-4">
+        <input value={text} onChange={e => setText(e.target.value)} className="border p-2 rounded w-full" placeholder="Enter new task..." />
+        <button onClick={handleAdd} className="gb-blue-600 text-white px-4 rounded">
+          Add
+        </button>
+      </div>
+
+      <ul>
+        {tasks.map(task => (
+          <TaskItem key={task._id} task={task} ontoggle={handleToggle} onDelete={handleDelete} />
+        ))}
+      </ul>
+    </div>
+  );
 };
+
+export default Home;
