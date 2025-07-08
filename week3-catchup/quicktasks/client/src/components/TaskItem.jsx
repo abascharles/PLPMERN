@@ -1,7 +1,14 @@
 const TaskItem = ({ task, ontoggle, onDelete }) => {
   return (
     <li className="flex justify-between items-center bg-white p-2 mb-2 shadow">
-      <span className={`cursor-pointer ${(task, completed ? 'line-trough text-gray' : '')}`}>{task.text}</span>
+      <span onClick={() => ontoggle(task._id)} className={`cursor-pointer ${task.completed ? 'line-trough text-gray' : ''}`}>
+        {task.text}
+      </span>
+      <button onClick={() => onDelete(task._id)} className="text-red-500 font-bold">
+        X
+      </button>
     </li>
   );
 };
+
+export default TaskItem;
