@@ -28,9 +28,16 @@ const Home = () => {
     setText(''); //clears the input box after sucessfully adding the task
   };
 
-  //Updating
+  //Updating (toggle complete)
   const handleToggle = async id => {
     const task = task.find(t => t._id === id);
     const res = await updateTask(id, { ...task, completed: !task.completed });
+    setTasks(prev => prev.map(t => (t._id === id ? res.data : t)));
+  };
+
+  //deleting
+  const handleDelete = async id => {
+    await deleteTask(id);
+    setTasks(prev => prev.filter(t => t._id != id));
   };
 };
