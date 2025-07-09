@@ -10,3 +10,13 @@ app.post('/api/users', async (req, res) => {
 
 //Authentication - verfication after registering
 //Autghorization - level acess
+
+//Json we Token - required string that has
+// - requiresd user information
+// - secure string with signed with a secret
+// - adlbe to be sent with every request
+
+//Why use JWT?
+//it is stateless
+//it is secure
+//cam be decoded by both frontend and backend
