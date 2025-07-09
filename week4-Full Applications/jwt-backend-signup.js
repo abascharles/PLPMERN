@@ -33,8 +33,23 @@ app.post('/api/users/login', async (req, res) => {
   res.json({ token });
 });
 
-//Protecting routes using JWT middleware
-
+//Protecting routes using JWT middleware during loggin in
+//The How
 const auth = (req, res, next) => {
-  const token = req.headers.authorization?.split('')[1];
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).send('Token Required ');
+
+  //Decoding the token
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(403).send('Invalid token');
+  }
 };
+
+//The use
+app.get('/api/profile', auth, (req, res) => {
+  res.send(`Welcome user ${req.user.id}`);
+});
