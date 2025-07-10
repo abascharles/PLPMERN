@@ -13,9 +13,9 @@ app.post('/api/users/sigup', async (req, res) => {
   //Creating user and indicating thatit is hashed.
   const user = await User.create({ email, password: hash });
 
-  //token generartion using jwt.sign() method
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-  res.json({ token });
+  // //token generartion using jwt.sign() method  -- not needed during register
+  // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  // res.json({ token });
 });
 
 //fectching the user
@@ -28,7 +28,7 @@ app.post('/api/users/login', async (req, res) => {
   const isMatch = await bcrypt.compare(req.body.password, user.password);
   if (!isMatch) return res.status(401).send('Invalid password');
 
-  //Generate the token
+  //token generartion using jwt.sign() method
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   res.json({ token });
 });
