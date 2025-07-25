@@ -1,16 +1,56 @@
-# greensteps
+# GreenSteps Flutter App
 
-A new Flutter project.
+## Running the App
 
-## Getting Started
+### Prerequisites
 
-This project is a starting point for a Flutter application.
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) installed
+- Device/emulator/simulator or browser for your target platform
 
-A few resources to get you started if this is your first Flutter project:
+### Android
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+flutter run -d android
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### iOS (on macOS)
+
+```
+flutter run -d ios
+```
+
+### Web
+
+```
+flutter run -d chrome
+```
+
+### All Devices (list available devices)
+
+```
+flutter devices
+flutter run -d <device_id>
+```
+
+## Notes
+
+- Make sure to set up your Supabase credentials in `main.dart` before running the app.
+- For web, you may need to enable web support: `flutter config --enable-web`
+
+## Supabase RLS Policies for actions Table
+
+Enable RLS for the actions table, then run these SQL policies in the Supabase SQL editor:
+
+```sql
+-- Allow users to insert their own actions
+CREATE POLICY "Allow insert for authenticated users"
+ON public.actions
+FOR INSERT
+USING (auth.uid() = user_id);
+
+-- Allow users to select their own actions
+CREATE POLICY "Allow select for authenticated users"
+ON public.actions
+FOR SELECT
+USING (auth.uid() = user_id);
+```
