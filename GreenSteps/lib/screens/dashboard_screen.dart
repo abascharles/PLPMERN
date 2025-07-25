@@ -94,6 +94,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: const Text('GreenSteps Dashboard'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.account_circle),
+            tooltip: 'Profile',
+            onPressed: () {
+              Navigator.pushNamed(context, '/profile');
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.leaderboard),
             tooltip: 'Leaderboard',
             onPressed: () {

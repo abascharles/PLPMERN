@@ -10,8 +10,8 @@ class AuthService {
     );
     if (response.user == null) {
       final error =
-          response.session?.user?.identities?.firstOrNull?.identityData != null
-          ? response.session!.user!.identities!.first.identityData!['error']
+          response.session?.user.identities?.firstOrNull?.identityData != null
+          ? response.session!.user.identities!.first.identityData!['error']
           : null;
       throw Exception(error ?? 'Login failed');
     }
@@ -24,8 +24,8 @@ class AuthService {
     );
     if (response.user == null) {
       final error =
-          response.session?.user?.identities?.firstOrNull?.identityData != null
-          ? response.session!.user!.identities!.first.identityData!['error']
+          response.session?.user.identities?.firstOrNull?.identityData != null
+          ? response.session!.user.identities!.first.identityData!['error']
           : null;
       throw Exception(error ?? 'Signup failed');
     }
@@ -36,10 +36,5 @@ class AuthService {
       Provider.google,
       redirectTo: null, // You can set a redirect URL for web
     );
-    // For mobile, the user will be redirected automatically
-    // For web, you may need to handle the redirect
-    if (res == null) {
-      throw Exception('Google sign-in failed');
-    }
   }
 }
