@@ -5,4 +5,6 @@ const createUser = async () => {
   const res = await axios.post(API, {
     name: 'Abas',
   });
+
+  console.log(res.data); //show created user
 };
