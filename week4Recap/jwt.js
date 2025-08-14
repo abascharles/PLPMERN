@@ -24,4 +24,8 @@ app.post('api/users/signup', async (req, res) => {
 
   //comparing the  password
   const isMatch = await bcrypt.compare(req.body.password, user.password);
+  if (!isMatch) return res.status(401).send('Invalid password');
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  res.json({ token });
 });
