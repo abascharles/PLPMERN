@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const app = express();
 
-//Hashing the  password and cretaing anew user with the  hashed password
+//Hashing the  password and cretaing a new user with the  hashed password
 
 app.post('api/users/signup', async (req, res) => {
   const { email, password } = req.body;
@@ -29,3 +29,15 @@ app.post('api/users/signup', async (req, res) => {
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   res.json({ token });
 });
+
+//Protecting routes using JWT Middleware
+//HOW
+
+const auth = (req, res, next) => {
+  const token = req.headers.authorization?.split('')[1]; //Bearer <token>
+  if (!token) return res.status(401).send('Token required');
+
+  try {
+    const decoded = jwt;
+  } catch (error) {}
+};
