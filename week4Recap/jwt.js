@@ -33,7 +33,7 @@ app.post('api/users/sigin', async (req, res) => {
 });
 
 //Protecting routes using JWT Middleware
-//HOW
+//The How
 
 const auth = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1]; //Bearer <token>
@@ -47,3 +47,9 @@ const auth = (req, res, next) => {
     res.status(403).send('Invalid Token');
   }
 };
+
+//The use  - route protection
+
+app.get('api/profile', auth, (req, res) => {
+  res.send(`Welcome user ${req.user.id}`);
+});
