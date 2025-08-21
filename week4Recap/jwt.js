@@ -36,8 +36,8 @@ app.post('api/users/sigin', async (req, res) => {
 //HOW
 
 const auth = (req, res, next) => {
-  const token = req.headers.authorization?.split('')[1]; //Bearer <token>
-  if (!token) return res.status(401).send('Token required');
+  const token = req.headers.authorization?.split(' ')[1]; //Bearer <token>
+  if (!token) return res.status(401).send('No valid token provided');
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
