@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const app = express();
 
-//Hashing the  password and cretaing a new user with the  hashed password
+//Hashing the  password and creating a new user with the  hashed password
 
 app.post('api/users/signup', async (req, res) => {
   const { email, password } = req.body;
@@ -38,6 +38,10 @@ const auth = (req, res, next) => {
   if (!token) return res.status(401).send('Token required');
 
   try {
-    const decoded = jwt;
-  } catch (error) {}
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(403).send('Invalid Token');
+  }
 };
