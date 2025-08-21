@@ -8,7 +8,9 @@ const app = express();
 
 app.post('api/users/signup', async (req, res) => {
   const { email, password } = req.body;
+  //Hasshing the password
   const hash = await bcrypt.hash(password, 10);
+  //Creating the user using the email and the hashed password
   const user = await User.create({ email, password: hash });
 
   //Generating a token
@@ -16,9 +18,9 @@ app.post('api/users/signup', async (req, res) => {
   res.json({ token });
 });
 
-//login validate and  compare our passwords
+//login validate and compare our passwords
 
-app.post('api/users/signup', async (req, res) => {
+app.post('api/users/sigin', async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(404).send('user not found');
 
