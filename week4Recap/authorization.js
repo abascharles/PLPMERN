@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
-    res.status(403).send('Invalid Token MAN');
+    res.status(403).send('Invalid Token');
   }
 };
 
